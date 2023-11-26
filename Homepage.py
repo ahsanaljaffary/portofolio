@@ -1,6 +1,5 @@
 import requests
 import streamlit as st
-from streamlit_lottie import st_lottie
 from PIL import Image
 
 st.set_page_config(
@@ -9,18 +8,11 @@ st.set_page_config(
     layout="wide"
 )
 
-def load_lottieurl(url):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
-
-lottie = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_fcfjwiyb.json")
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-local_css("style/style.css")
+local_css("style.css")
 
 with st.container():
     st.subheader("Hai, Saya Ahsan :wave:")
@@ -183,4 +175,4 @@ with tab4:
             """
             st.markdown(contact_form, unsafe_allow_html=True)
         with col2:
-            st_lottie(lottie, height=300, key="coding")   
+            st.empty()
